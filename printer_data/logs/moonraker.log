@@ -298,3 +298,4 @@ Klipper Version: v0.12.0-102-g9f41f53c-dirty
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryy2M1xx6T7nqJFRNl
 2024-02-10 01:36:56,342 [application.py:post()] - Processing Uploaded File: Print_Start.cfg
 2024-02-10 01:36:56,350 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 22.61ms
+2024-02-10 01:52:43,809 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.255.37
