@@ -1,0 +1,300 @@
+-------------------- Log Start | Sat Feb 10 06:11:56 2024 --------------------
+data_path: /home/pi/printer_data
+is_default_data_path: False
+config_file: /home/pi/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: b7db7f54c0be483b8faeffdcd3c59b29
+unix_socket_path: /home/pi/printer_data/comms/moonraker.sock
+software_version: v0.8.0-310-g67c98f6
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/pi/printer_data/logs/moonraker.log
+python_version: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+launch_args: /home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/moonraker.py -d /home/pi/printer_data
+msgspec_enabled: False
+uvloop_enabled: False
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/pi/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	127.0.0.1
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager KlipperScreen]
+type = git_repo
+path = ~/KlipperScreen
+origin = https://github.com/KlipperScreen/KlipperScreen.git
+virtualenv = ~/.KlipperScreen-env
+requirements = scripts/KlipperScreen-requirements.txt
+system_dependencies = scripts/system-dependencies.json
+managed_services = KlipperScreen
+
+#################################################################
+All Configuration Files:
+/home/pi/printer_data/config/moonraker.conf
+#################################################################
+
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 8
+
+System Info:
+
+***python***
+  version: (3, 11, 2, 'final', 0)
+  version_string: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000ab86a281
+  hardware_desc: 
+  model: Raspberry Pi 4 Model B Rev 1.5
+  total_memory: 1892488
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 03
+  manufacturer: Sandisk
+  oem_id: 5344
+  product_name: SC16G
+  product_revision: 8.0
+  serial_number: e1a7ddd6
+  manufacturer_date: 6/2021
+  capacity: 14.8 GiB
+  total_bytes: 15931539456
+
+***distribution***
+  name: Debian GNU/Linux 12 (bookworm)
+  id: debian
+  version: 12
+  version_parts: {'major': '12', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bookworm
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Module libcamera unavailble, import failed
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', '-.mount', 'network-online.target', 'sysinit.target']
+**After=['-.mount', 'systemd-journald.socket', 'system.slice', 'basic.target', 'network-online.target', 'sysinit.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/pi/printer_data/systemd/moonraker.env
+**ExecStart=/home/pi/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/pi/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=pi
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', '-.mount']
+**After=['-.mount', 'basic.target', 'network-online.target', 'systemd-journald.socket', 'sysinit.target', 'system.slice']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/pi/printer_data/systemd/klipper.env
+**ExecStart=/home/pi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/pi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=pi
+Git Repo moonraker: No warnings detected
+Git Repo klipper: Warnings detected:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+Git Repo KlipperScreen: No warnings detected
+Klipper Version: v0.12.0-102-g9f41f53c-dirty
+2024-02-10 00:11:56,315 [websockets.py:on_close()] - Websocket Closed: ID: 547984100944 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 4.96
+2024-02-10 00:18:52,795 [websockets.py:on_close()] - Websocket Closed: ID: 547947064464 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.08
+2024-02-10 00:19:08,352 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 5.81ms
+2024-02-10 00:19:08,519 [application.py:log_request()] - 101 GET /websocket?token=RAP6MN3FKANXIY2XR6PEPZUB6LGV3F7K (192.168.255.42) [_TRUSTED_USER_] 2.50ms
+2024-02-10 00:19:08,519 [websockets.py:open()] - Websocket Opened: ID: 547946605392, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:19:08,521 [websockets.py:on_close()] - Websocket Closed: ID: 547946605392 Close Code: None, Close Reason: None, Pong Time Elapsed: 0.00
+2024-02-10 00:19:08,607 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.98ms
+2024-02-10 00:19:08,679 [application.py:log_request()] - 101 GET /websocket?token=7DRX34XX26XFVMXFVAIYTWC2VYY24V6F (192.168.255.42) [_TRUSTED_USER_] 2.66ms
+2024-02-10 00:19:08,679 [websockets.py:open()] - Websocket Opened: ID: 547956428880, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:19:08,685 [websockets.py:_handle_identify()] - Websocket 547956428880 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:19:08,686 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:36:48,578 [websockets.py:on_close()] - Websocket Closed: ID: 547956428880 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 9.89
+2024-02-10 00:36:48,711 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.21ms
+2024-02-10 00:36:48,784 [application.py:log_request()] - 101 GET /websocket?token=A2NNNDU6ZZOLJLA5OQIX56PZBI2ZFLPM (192.168.255.42) [_TRUSTED_USER_] 2.27ms
+2024-02-10 00:36:48,785 [websockets.py:open()] - Websocket Opened: ID: 547985133712, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:36:48,790 [websockets.py:_handle_identify()] - Websocket 547985133712 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:36:48,790 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:37:06,211 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.18ms
+2024-02-10 00:37:06,304 [application.py:log_request()] - 101 GET /websocket?token=4V6IKLGFKCNYROYW73D26J4QDGZHU3WM (192.168.255.42) [_TRUSTED_USER_] 2.27ms
+2024-02-10 00:37:06,304 [websockets.py:open()] - Websocket Opened: ID: 547985257424, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:37:06,309 [websockets.py:_handle_identify()] - Websocket 547985257424 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:37:06,310 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:37:09,463 [websockets.py:on_close()] - Websocket Closed: ID: 547985257424 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.16
+2024-02-10 00:37:09,584 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 3.33ms
+2024-02-10 00:37:09,646 [application.py:log_request()] - 101 GET /websocket?token=VYC4GZ6WWYMU2XMRM55CARETUVVUS7YL (192.168.255.42) [_TRUSTED_USER_] 1.19ms
+2024-02-10 00:37:09,646 [websockets.py:open()] - Websocket Opened: ID: 547985158800, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:37:09,651 [websockets.py:_handle_identify()] - Websocket 547985158800 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:37:09,651 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:40:01,814 [websockets.py:on_close()] - Websocket Closed: ID: 547985133712 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.02
+2024-02-10 00:40:02,002 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.93ms
+2024-02-10 00:40:02,072 [application.py:log_request()] - 101 GET /websocket?token=2RLHASIISQVN3JID7B7XJORBMBJ57VSB (192.168.255.42) [_TRUSTED_USER_] 2.38ms
+2024-02-10 00:40:02,072 [websockets.py:open()] - Websocket Opened: ID: 547985188944, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:40:02,076 [websockets.py:_handle_identify()] - Websocket 547985188944 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:40:02,077 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:40:20,076 [websockets.py:on_close()] - Websocket Closed: ID: 547985188944 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 7.99
+2024-02-10 00:40:20,228 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.99ms
+2024-02-10 00:40:20,295 [application.py:log_request()] - 101 GET /websocket?token=XUVSSRG4P7DWNU7FMKMIVXOFFKPTDVOP (192.168.255.42) [_TRUSTED_USER_] 1.96ms
+2024-02-10 00:40:20,296 [websockets.py:open()] - Websocket Opened: ID: 547956724816, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:40:20,300 [websockets.py:_handle_identify()] - Websocket 547956724816 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:40:20,301 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:40:27,423 [websockets.py:on_close()] - Websocket Closed: ID: 547956724816 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 7.13
+2024-02-10 00:40:27,559 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 5.93ms
+2024-02-10 00:40:27,626 [application.py:log_request()] - 101 GET /websocket?token=F3MH45BILIKQP3TM3ZF4XYLLYMAKTT2E (192.168.255.42) [_TRUSTED_USER_] 1.89ms
+2024-02-10 00:40:27,626 [websockets.py:open()] - Websocket Opened: ID: 547984011408, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:40:27,630 [websockets.py:_handle_identify()] - Websocket 547984011408 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:40:27,631 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:40:35,758 [websockets.py:on_close()] - Websocket Closed: ID: 547984011408 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 8.13
+2024-02-10 00:40:35,846 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.39ms
+2024-02-10 00:40:35,912 [application.py:log_request()] - 101 GET /websocket?token=TMYASUQHLS3TZOKWE4SJURXT2WO7C2KE (192.168.255.42) [_TRUSTED_USER_] 1.97ms
+2024-02-10 00:40:35,913 [websockets.py:open()] - Websocket Opened: ID: 547983805072, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:40:35,917 [websockets.py:_handle_identify()] - Websocket 547983805072 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:40:35,918 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:41:12,391 [websockets.py:on_close()] - Websocket Closed: ID: 547983805072 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 6.47
+2024-02-10 00:41:12,490 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.41ms
+2024-02-10 00:41:12,573 [application.py:log_request()] - 101 GET /websocket?token=GUBQ6U7AZYSSCHFO4J5IHGVBORXH3VPB (192.168.255.42) [_TRUSTED_USER_] 2.34ms
+2024-02-10 00:41:12,574 [websockets.py:open()] - Websocket Opened: ID: 547985206096, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:41:12,579 [websockets.py:_handle_identify()] - Websocket 547985206096 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:41:12,579 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:41:26,345 [websockets.py:on_close()] - Websocket Closed: ID: 547985206096 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.76
+2024-02-10 00:41:26,447 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 5.09ms
+2024-02-10 00:41:26,511 [application.py:log_request()] - 101 GET /websocket?token=PDCZVX264VAIT4VZNZX6RKKNRNEM2YQJ (192.168.255.42) [_TRUSTED_USER_] 1.86ms
+2024-02-10 00:41:26,511 [websockets.py:open()] - Websocket Opened: ID: 547983529424, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:41:26,515 [websockets.py:_handle_identify()] - Websocket 547983529424 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:41:26,516 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:41:39,191 [websockets.py:on_close()] - Websocket Closed: ID: 547983529424 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 2.68
+2024-02-10 00:41:39,294 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.26ms
+2024-02-10 00:41:39,361 [application.py:log_request()] - 101 GET /websocket?token=EZVTYKZIIP2VLMFYMJFUEUH2GPS4EWHI (192.168.255.42) [_TRUSTED_USER_] 2.13ms
+2024-02-10 00:41:39,362 [websockets.py:open()] - Websocket Opened: ID: 547985143888, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:41:39,367 [websockets.py:_handle_identify()] - Websocket 547985143888 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:41:39,367 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:41:52,649 [websockets.py:on_close()] - Websocket Closed: ID: 547985143888 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.26
+2024-02-10 00:41:52,761 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 11.57ms
+2024-02-10 00:41:52,826 [application.py:log_request()] - 101 GET /websocket?token=FWJLEWWCYDWUZTA5LA5QVJZXWNCM2CYK (192.168.255.42) [_TRUSTED_USER_] 2.17ms
+2024-02-10 00:41:52,826 [websockets.py:open()] - Websocket Opened: ID: 547985348240, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:41:52,831 [websockets.py:_handle_identify()] - Websocket 547985348240 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:41:52,832 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:42:00,777 [websockets.py:on_close()] - Websocket Closed: ID: 547985348240 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 7.95
+2024-02-10 00:42:00,937 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 7.86ms
+2024-02-10 00:42:01,010 [application.py:log_request()] - 101 GET /websocket?token=RON3ATJGKCYFH5NEOZAAHGKOHCEEH6PX (192.168.255.42) [_TRUSTED_USER_] 2.16ms
+2024-02-10 00:42:01,010 [websockets.py:open()] - Websocket Opened: ID: 547983856528, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:42:01,015 [websockets.py:_handle_identify()] - Websocket 547983856528 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:42:01,016 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:42:38,918 [websockets.py:on_close()] - Websocket Closed: ID: 547983856528 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 7.90
+2024-02-10 00:42:39,012 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.47ms
+2024-02-10 00:42:39,081 [application.py:log_request()] - 101 GET /websocket?token=NVR7NFI23SUEJ2J6OPMJXZ3LVCGXBIGG (192.168.255.42) [_TRUSTED_USER_] 1.97ms
+2024-02-10 00:42:39,081 [websockets.py:open()] - Websocket Opened: ID: 547946721680, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:42:39,086 [websockets.py:_handle_identify()] - Websocket 547946721680 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:42:39,087 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:43:45,413 [websockets.py:on_close()] - Websocket Closed: ID: 547946721680 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 6.32
+2024-02-10 00:43:45,529 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.83ms
+2024-02-10 00:43:45,624 [application.py:log_request()] - 101 GET /websocket?token=2NHMMPDOEFGMMEFZKA2DZN4H4MMVAAVZ (192.168.255.42) [_TRUSTED_USER_] 1.89ms
+2024-02-10 00:43:45,624 [websockets.py:open()] - Websocket Opened: ID: 547984381520, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:43:45,628 [websockets.py:_handle_identify()] - Websocket 547984381520 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:43:45,629 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:43:55,785 [websockets.py:on_close()] - Websocket Closed: ID: 547984381520 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 0.15
+2024-02-10 00:43:55,953 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.91ms
+2024-02-10 00:43:56,021 [application.py:log_request()] - 101 GET /websocket?token=HOXUUA4NPSM2WXT7MN6PUPXAEI5M55TQ (192.168.255.42) [_TRUSTED_USER_] 1.90ms
+2024-02-10 00:43:56,021 [websockets.py:open()] - Websocket Opened: ID: 547946630224, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:43:56,026 [websockets.py:_handle_identify()] - Websocket 547946630224 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:43:56,027 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:44:06,366 [websockets.py:on_close()] - Websocket Closed: ID: 547946630224 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 0.34
+2024-02-10 00:44:06,522 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 5.58ms
+2024-02-10 00:44:06,585 [application.py:log_request()] - 101 GET /websocket?token=O3SWG2DJFLE2QSHY5OQHYQOO2SEZYGIQ (192.168.255.42) [_TRUSTED_USER_] 1.91ms
+2024-02-10 00:44:06,586 [websockets.py:open()] - Websocket Opened: ID: 547946321040, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-10 00:44:06,590 [websockets.py:_handle_identify()] - Websocket 547946321040 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:44:06,591 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:47:43,796 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2024-02-10 00:49:21,907 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.37
+2024-02-10 00:49:21,974 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.37) [_TRUSTED_USER_] 6.25ms
+2024-02-10 00:49:22,534 [application.py:log_request()] - 101 GET /websocket?token=DQMU6JWTGIFM5TN2YKG64SPVZGPZUVCH (192.168.255.37) [_TRUSTED_USER_] 2.22ms
+2024-02-10 00:49:22,534 [websockets.py:open()] - Websocket Opened: ID: 547956727312, Proxied: True, User Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1, Host Name: fluidvoron.local
+2024-02-10 00:49:22,547 [websockets.py:_handle_identify()] - Websocket 547956727312 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:49:22,548 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:49:27,481 [websockets.py:on_close()] - Websocket Closed: ID: 547956727312 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 4.95
+2024-02-10 00:49:27,945 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.37) [_TRUSTED_USER_] 6.97ms
+2024-02-10 00:49:28,433 [application.py:log_request()] - 101 GET /websocket?token=HGNM3VQOUN5DCQCTC2GNJ2L3YEPE667R (192.168.255.37) [_TRUSTED_USER_] 2.53ms
+2024-02-10 00:49:28,433 [websockets.py:open()] - Websocket Opened: ID: 547956399184, Proxied: True, User Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1, Host Name: fluidvoron.local
+2024-02-10 00:49:28,467 [websockets.py:_handle_identify()] - Websocket 547956399184 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:49:28,506 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:49:48,746 [websockets.py:on_close()] - Websocket Closed: ID: 547956399184 Close Code: None, Close Reason: None, Pong Time Elapsed: 0.23
+2024-02-10 01:29:35,359 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.90ms
+2024-02-10 01:29:35,475 [application.py:log_request()] - 101 GET /websocket?token=2YY6IFPWNJV5TEQPJRNVMYJCY43CW7WV (192.168.255.42) [_TRUSTED_USER_] 1.94ms
+2024-02-10 01:29:35,475 [websockets.py:open()] - Websocket Opened: ID: 547984463504, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-10 01:29:35,485 [websockets.py:_handle_identify()] - Websocket 547984463504 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 01:29:35,486 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 01:30:46,899 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 8.86ms
+2024-02-10 01:30:47,073 [application.py:log_request()] - 101 GET /websocket?token=555NIMC5YNURSDDFLWTGOI4CXHIVF63N (192.168.255.42) [_TRUSTED_USER_] 2.43ms
+2024-02-10 01:30:47,073 [websockets.py:open()] - Websocket Opened: ID: 547984360528, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-10 01:30:47,079 [websockets.py:_handle_identify()] - Websocket 547984360528 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 01:30:47,080 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 01:36:56,328 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryy2M1xx6T7nqJFRNl
+2024-02-10 01:36:56,342 [application.py:post()] - Processing Uploaded File: Print_Start.cfg
+2024-02-10 01:36:56,350 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 22.61ms

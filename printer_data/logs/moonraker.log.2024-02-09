@@ -1,0 +1,651 @@
+-------------------- Log Start | Fri Feb  9 07:11:06 2024 --------------------
+data_path: /home/pi/printer_data
+is_default_data_path: False
+config_file: /home/pi/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: b7db7f54c0be483b8faeffdcd3c59b29
+unix_socket_path: /home/pi/printer_data/comms/moonraker.sock
+software_version: v0.8.0-310-g67c98f6
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/pi/printer_data/logs/moonraker.log
+python_version: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+launch_args: /home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/moonraker.py -d /home/pi/printer_data
+msgspec_enabled: False
+uvloop_enabled: False
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/pi/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	127.0.0.1
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager KlipperScreen]
+type = git_repo
+path = ~/KlipperScreen
+origin = https://github.com/KlipperScreen/KlipperScreen.git
+virtualenv = ~/.KlipperScreen-env
+requirements = scripts/KlipperScreen-requirements.txt
+system_dependencies = scripts/system-dependencies.json
+managed_services = KlipperScreen
+
+#################################################################
+All Configuration Files:
+/home/pi/printer_data/config/moonraker.conf
+#################################################################
+
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 8
+
+System Info:
+
+***python***
+  version: (3, 11, 2, 'final', 0)
+  version_string: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000ab86a281
+  hardware_desc: 
+  model: Raspberry Pi 4 Model B Rev 1.5
+  total_memory: 1892488
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 03
+  manufacturer: Sandisk
+  oem_id: 5344
+  product_name: SC16G
+  product_revision: 8.0
+  serial_number: e1a7ddd6
+  manufacturer_date: 6/2021
+  capacity: 14.8 GiB
+  total_bytes: 15931539456
+
+***distribution***
+  name: Debian GNU/Linux 12 (bookworm)
+  id: debian
+  version: 12
+  version_parts: {'major': '12', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bookworm
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Module libcamera unavailble, import failed
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', '-.mount', 'network-online.target', 'sysinit.target']
+**After=['-.mount', 'systemd-journald.socket', 'system.slice', 'basic.target', 'network-online.target', 'sysinit.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/pi/printer_data/systemd/moonraker.env
+**ExecStart=/home/pi/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/pi/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=pi
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', '-.mount']
+**After=['-.mount', 'basic.target', 'network-online.target', 'systemd-journald.socket', 'sysinit.target', 'system.slice']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/pi/printer_data/systemd/klipper.env
+**ExecStart=/home/pi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/pi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=pi
+Git Repo moonraker: No warnings detected
+Git Repo klipper: Warnings detected:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+Git Repo KlipperScreen: No warnings detected
+Klipper Version: v0.12.0-102-g9f41f53c-dirty
+2024-02-09 01:11:06,337 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.42
+2024-02-09 01:11:06,364 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 8.05ms
+2024-02-09 01:11:06,473 [application.py:log_request()] - 101 GET /websocket?token=6UEAQWNSXCDN332TERCY2PMBSULLR5LZ (192.168.255.42) [_TRUSTED_USER_] 2.06ms
+2024-02-09 01:11:06,473 [websockets.py:open()] - Websocket Opened: ID: 547946629968, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 01:11:06,479 [websockets.py:_handle_identify()] - Websocket 547946629968 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 01:11:06,479 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 01:23:19,698 [websockets.py:on_close()] - Websocket Closed: ID: 547946629968 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.22
+2024-02-09 01:26:16,188 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.24ms
+2024-02-09 01:26:16,296 [application.py:log_request()] - 101 GET /websocket?token=XO3LLSORX3VFO3YOHJXYS3Z6HO4Y75P6 (192.168.255.42) [_TRUSTED_USER_] 1.89ms
+2024-02-09 01:26:16,297 [websockets.py:open()] - Websocket Opened: ID: 547946616528, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 01:26:16,304 [websockets.py:_handle_identify()] - Websocket 547946616528 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 01:26:16,305 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 01:28:32,268 [websockets.py:on_close()] - Websocket Closed: ID: 547946616528 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 5.96
+2024-02-09 02:27:43,527 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.255.42
+2024-02-09 02:47:46,091 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.37
+2024-02-09 02:47:46,174 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.37) [_TRUSTED_USER_] 8.13ms
+2024-02-09 02:47:46,654 [application.py:log_request()] - 101 GET /websocket?token=M5TJMJ4AECW3363OAF73W75RYORY6CXG (192.168.255.37) [_TRUSTED_USER_] 2.09ms
+2024-02-09 02:47:46,655 [websockets.py:open()] - Websocket Opened: ID: 547946597072, Proxied: True, User Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1, Host Name: fluidvoron.local
+2024-02-09 02:47:46,667 [websockets.py:_handle_identify()] - Websocket 547946597072 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 02:47:46,668 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 02:48:56,680 [websockets.py:on_close()] - Websocket Closed: ID: 547946597072 Close Code: None, Close Reason: None, Pong Time Elapsed: 0.01
+2024-02-09 03:05:03,742 [application.py:log_request()] - 101 GET /websocket?token=3BTULFKZ4LXBUA42Z554GKLMJQQ35KLM (192.168.255.37) [_TRUSTED_USER_] 2.44ms
+2024-02-09 03:05:03,742 [websockets.py:open()] - Websocket Opened: ID: 547985237776, Proxied: True, User Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1, Host Name: fluidvoron.local
+2024-02-09 03:05:03,756 [websockets.py:_handle_identify()] - Websocket 547985237776 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 03:05:03,757 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 03:05:33,080 [websockets.py:on_close()] - Websocket Closed: ID: 547985237776 Close Code: None, Close Reason: None, Pong Time Elapsed: 9.33
+2024-02-09 03:07:27,485 [application.py:log_request()] - 101 GET /websocket?token=OFOP4IWAG2NCS5PLKLPPQ6KLWSYPITE2 (192.168.255.37) [_TRUSTED_USER_] 2.41ms
+2024-02-09 03:07:27,486 [websockets.py:open()] - Websocket Opened: ID: 547946716240, Proxied: True, User Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1, Host Name: fluidvoron.local
+2024-02-09 03:07:27,503 [websockets.py:_handle_identify()] - Websocket 547946716240 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 03:07:27,504 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 03:07:32,043 [websockets.py:on_close()] - Websocket Closed: ID: 547946716240 Close Code: None, Close Reason: None, Pong Time Elapsed: 4.56
+2024-02-09 04:07:43,553 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.255.37
+2024-02-09 05:40:00,481 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2024-02-09 14:14:28,509 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.42
+2024-02-09 14:14:28,535 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 7.01ms
+2024-02-09 14:14:28,642 [application.py:log_request()] - 101 GET /websocket?token=F7524LKREVBCTPDXP7TCBOF6PSHQAFJN (192.168.255.42) [_TRUSTED_USER_] 2.00ms
+2024-02-09 14:14:28,643 [websockets.py:open()] - Websocket Opened: ID: 547947059792, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 14:14:28,690 [websockets.py:_handle_identify()] - Websocket 547947059792 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 14:14:28,690 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 14:14:53,600 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Must home axis first: 62.000 266.000 18.000 [16292.120]
+2024-02-09 14:16:30,277 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2024-02-09 14:17:30,279 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 120.00 seconds
+2024-02-09 14:18:30,280 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 180.00 seconds
+2024-02-09 14:19:30,282 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 240.01 seconds
+2024-02-09 14:20:30,283 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 300.01 seconds
+2024-02-09 14:21:30,285 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 360.01 seconds
+2024-02-09 14:22:30,286 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 420.01 seconds
+2024-02-09 14:23:30,288 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 480.01 seconds
+2024-02-09 14:24:30,290 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 540.01 seconds
+2024-02-09 14:25:30,291 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 600.01 seconds
+2024-02-09 14:26:30,292 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 660.02 seconds
+2024-02-09 14:27:30,294 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 720.02 seconds
+2024-02-09 14:28:30,295 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 780.02 seconds
+2024-02-09 14:29:30,297 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 840.02 seconds
+2024-02-09 14:30:30,298 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 900.02 seconds
+2024-02-09 14:31:30,299 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 960.02 seconds
+2024-02-09 14:32:30,301 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1020.03 seconds
+2024-02-09 14:33:30,303 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1080.03 seconds
+2024-02-09 14:34:30,304 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1140.03 seconds
+2024-02-09 14:35:30,305 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1200.03 seconds
+2024-02-09 14:36:30,307 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1260.03 seconds
+2024-02-09 14:37:30,308 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1320.03 seconds
+2024-02-09 14:38:30,309 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1380.03 seconds
+2024-02-09 14:39:30,310 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1440.03 seconds
+2024-02-09 14:40:30,312 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1500.04 seconds
+2024-02-09 14:41:30,313 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1560.04 seconds
+2024-02-09 14:42:30,315 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1620.04 seconds
+2024-02-09 14:43:30,317 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1680.04 seconds
+2024-02-09 14:44:30,319 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1740.04 seconds
+2024-02-09 14:45:30,320 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1800.04 seconds
+2024-02-09 14:46:30,322 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1860.05 seconds
+2024-02-09 14:47:30,323 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1920.05 seconds
+2024-02-09 14:48:30,325 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 1980.05 seconds
+2024-02-09 14:49:30,326 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2040.05 seconds
+2024-02-09 14:50:30,328 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2100.05 seconds
+2024-02-09 14:51:30,330 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2160.05 seconds
+2024-02-09 14:52:30,333 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2220.06 seconds
+2024-02-09 14:53:30,336 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2280.06 seconds
+2024-02-09 14:54:30,337 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2340.06 seconds
+2024-02-09 14:55:30,338 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2400.06 seconds
+2024-02-09 14:56:30,340 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2460.06 seconds
+2024-02-09 14:57:30,341 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2520.07 seconds
+2024-02-09 14:58:30,343 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2580.07 seconds
+2024-02-09 14:59:30,345 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2640.07 seconds
+2024-02-09 15:00:30,346 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2700.07 seconds
+2024-02-09 15:01:09,122 [websockets.py:on_close()] - Websocket Closed: ID: 547947059792 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 0.47
+2024-02-09 15:01:30,347 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2760.07 seconds
+2024-02-09 15:02:30,350 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2820.07 seconds
+2024-02-09 15:03:30,351 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2880.08 seconds
+2024-02-09 15:04:30,352 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 2940.08 seconds
+2024-02-09 15:05:30,355 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3000.08 seconds
+2024-02-09 15:06:30,357 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3060.08 seconds
+2024-02-09 15:07:30,358 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3120.08 seconds
+2024-02-09 15:08:30,360 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3180.08 seconds
+2024-02-09 15:09:30,360 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3240.08 seconds
+2024-02-09 15:10:30,362 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3300.09 seconds
+2024-02-09 15:11:30,363 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3360.09 seconds
+2024-02-09 15:12:30,365 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3420.09 seconds
+2024-02-09 15:13:30,367 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3480.09 seconds
+2024-02-09 15:14:30,369 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3540.09 seconds
+2024-02-09 15:15:30,370 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3600.09 seconds
+2024-02-09 15:16:30,371 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3660.10 seconds
+2024-02-09 15:17:30,373 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3720.10 seconds
+2024-02-09 15:17:43,698 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.255.42
+2024-02-09 15:18:30,375 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3780.10 seconds
+2024-02-09 15:19:30,377 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3840.10 seconds
+2024-02-09 15:20:30,378 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3900.10 seconds
+2024-02-09 15:21:30,381 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 3960.10 seconds
+2024-02-09 15:22:30,383 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4020.11 seconds
+2024-02-09 15:23:30,384 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4080.11 seconds
+2024-02-09 15:24:30,385 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4140.11 seconds
+2024-02-09 15:25:30,387 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4200.11 seconds
+2024-02-09 15:26:30,388 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4260.11 seconds
+2024-02-09 15:27:30,390 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4320.11 seconds
+2024-02-09 15:28:30,391 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4380.12 seconds
+2024-02-09 15:29:30,393 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4440.12 seconds
+2024-02-09 15:30:30,395 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4500.12 seconds
+2024-02-09 15:31:30,397 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4560.12 seconds
+2024-02-09 15:32:30,399 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4620.12 seconds
+2024-02-09 15:33:30,400 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4680.12 seconds
+2024-02-09 15:34:30,402 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4740.13 seconds
+2024-02-09 15:35:30,404 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 4800.13 seconds
+2024-02-09 17:52:12,575 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.42
+2024-02-09 17:52:12,600 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 8.02ms
+2024-02-09 17:52:12,691 [application.py:log_request()] - 101 GET /websocket?token=RREZNG2V7LB673TX6577UIIC2XNU5NE5 (192.168.255.42) [_TRUSTED_USER_] 2.16ms
+2024-02-09 17:52:12,692 [websockets.py:open()] - Websocket Opened: ID: 547984019088, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-09 17:52:12,697 [websockets.py:_handle_identify()] - Websocket 547984019088 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 17:52:12,698 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 18:05:06,672 [websockets.py:on_close()] - Websocket Closed: ID: 547984019088 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.97
+2024-02-09 18:05:06,807 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 8.04ms
+2024-02-09 18:05:06,882 [application.py:log_request()] - 101 GET /websocket?token=ZQZNBEXJU4LF7A6QH4RVPSQTQBBYAF7R (192.168.255.42) [_TRUSTED_USER_] 2.06ms
+2024-02-09 18:05:06,883 [websockets.py:open()] - Websocket Opened: ID: 547956715344, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-09 18:05:06,888 [websockets.py:_handle_identify()] - Websocket 547956715344 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 18:05:06,889 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 18:41:01,925 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=------------------------9c00f0e2d91d67b5
+2024-02-09 18:41:03,176 [application.py:post()] - Processing Uploaded File: Bottom_ABS_2h35m.gcode
+2024-02-09 18:41:03,357 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-09 18:41:03,485 [shell_command.py:_check_proc_success()] - Command (/home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/components/file_manager/metadata.py -p /home/pi/printer_data/gcodes -f "Bottom_ABS_2h35m.gcode") successfully finished
+2024-02-09 18:41:03,495 [application.py:log_request()] - 201 POST /api/files/local (192.168.255.42) [_TRUSTED_USER_] 1571.87ms
+2024-02-09 18:41:03,498 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/Bottom_ABS_2h35m-300x300.png>
+2024-02-09 18:41:03,500 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/Bottom_ABS_2h35m-32x32.png>
+2024-02-09 18:41:03,577 [job_state.py:_status_update()] - Job Started: Bottom_ABS_2h35m.gcode
+2024-02-09 18:45:05,970 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=------------------------f1e263915803c820
+2024-02-09 18:45:07,552 [application.py:post()] - Processing Uploaded File: Bottom_ABS_2h35m.gcode
+2024-02-09 18:45:07,742 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-09 18:45:07,870 [shell_command.py:_check_proc_success()] - Command (/home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/components/file_manager/metadata.py -p /home/pi/printer_data/gcodes -f "Bottom_ABS_2h35m.gcode") successfully finished
+2024-02-09 18:45:07,880 [application.py:log_request()] - 201 POST /api/files/local (192.168.255.42) [_TRUSTED_USER_] 1911.29ms
+2024-02-09 18:45:07,885 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/Bottom_ABS_2h35m-300x300.png>
+2024-02-09 18:45:07,885 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/Bottom_ABS_2h35m-32x32.png>
+2024-02-09 18:45:07,980 [job_state.py:_status_update()] - Job Started: Bottom_ABS_2h35m.gcode
+2024-02-09 18:48:57,075 [websockets.py:write_to_socket()] - Websocket closed while writing: 547956715344
+2024-02-09 18:49:01,887 [websockets.py:on_close()] - Websocket Closed: ID: 547956715344 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2024-02-09 18:49:35,856 [application.py:log_request()] - 101 GET /websocket?token=G74LLLCBHUKKTPOJWPJF6E6Z2CM3PX5A (192.168.255.42) [_TRUSTED_USER_] 2.45ms
+2024-02-09 18:49:35,856 [websockets.py:open()] - Websocket Opened: ID: 547985237456, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-09 18:49:35,876 [websockets.py:_handle_identify()] - Websocket 547985237456 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 18:49:35,877 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 18:56:59,911 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=------------------------fc400505340ea0d8
+2024-02-09 19:00:50,848 [klippy_connection.py:_process_status_update()] - Klippy has shutdown
+2024-02-09 19:00:50,855 [proc_stats.py:_handle_shutdown()] - 
+Moonraker System Usage Statistics:
+System Time: 1707526821.456324, Usage: 2.57%, Memory: 50548 kB
+System Time: 1707526822.457142, Usage: 1.94%, Memory: 50548 kB
+System Time: 1707526823.458701, Usage: 1.89%, Memory: 50548 kB
+System Time: 1707526824.459279, Usage: 2.09%, Memory: 50548 kB
+System Time: 1707526825.459116, Usage: 1.9%, Memory: 50548 kB
+System Time: 1707526826.461121, Usage: 1.99%, Memory: 50548 kB
+System Time: 1707526827.462235, Usage: 1.91%, Memory: 50548 kB
+System Time: 1707526828.463343, Usage: 1.88%, Memory: 50548 kB
+System Time: 1707526829.463452, Usage: 1.96%, Memory: 50548 kB
+System Time: 1707526830.465957, Usage: 1.9%, Memory: 50548 kB
+System Time: 1707526831.466338, Usage: 2.54%, Memory: 50548 kB
+System Time: 1707526832.466929, Usage: 1.86%, Memory: 50548 kB
+System Time: 1707526833.467206, Usage: 1.88%, Memory: 50548 kB
+System Time: 1707526834.468659, Usage: 1.99%, Memory: 50548 kB
+System Time: 1707526835.469078, Usage: 1.97%, Memory: 50548 kB
+System Time: 1707526836.470310, Usage: 2.14%, Memory: 50548 kB
+System Time: 1707526837.471223, Usage: 1.9%, Memory: 50548 kB
+System Time: 1707526838.472003, Usage: 1.89%, Memory: 50548 kB
+System Time: 1707526839.472069, Usage: 1.89%, Memory: 50548 kB
+System Time: 1707526840.473883, Usage: 1.8%, Memory: 50548 kB
+System Time: 1707526841.474193, Usage: 2.61%, Memory: 50548 kB
+System Time: 1707526842.474762, Usage: 1.86%, Memory: 50548 kB
+System Time: 1707526843.475477, Usage: 1.79%, Memory: 50548 kB
+System Time: 1707526844.476948, Usage: 2.02%, Memory: 50548 kB
+System Time: 1707526845.476681, Usage: 1.91%, Memory: 50548 kB
+System Time: 1707526846.478552, Usage: 1.99%, Memory: 50548 kB
+System Time: 1707526847.479723, Usage: 1.92%, Memory: 50548 kB
+System Time: 1707526848.481155, Usage: 1.87%, Memory: 50548 kB
+System Time: 1707526849.482217, Usage: 1.91%, Memory: 50548 kB
+System Time: 1707526850.483586, Usage: 1.89%, Memory: 50548 kB
+CPU Temperature: 45.277
+2024-02-09 19:00:50,857 [proc_stats.py:_handle_shutdown()] - Throttled Flags: 
+2024-02-09 19:01:11,906 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 8.13ms
+2024-02-09 19:01:13,327 [application.py:log_request()] - 101 GET /websocket?token=5ZDGM75A3L6KU3GTB4ILL4EXKBSWM7XL (192.168.255.42) [_TRUSTED_USER_] 1.98ms
+2024-02-09 19:01:13,328 [websockets.py:open()] - Websocket Opened: ID: 547984148048, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 19:01:13,374 [websockets.py:_handle_identify()] - Websocket 547984148048 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 19:01:13,374 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 19:01:15,734 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 19:01:15,799 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 19:01:15,822 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 19:01:16,996 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 19:01:18,557 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2024-02-09 19:01:18,980 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 19:01:20,096 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 19:01:20,097 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 19:01:20,348 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 19:01:20,608 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 19:01:21,099 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 19:13:18,424 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=------------------------019a07b7d475d046
+2024-02-09 19:13:19,804 [application.py:post()] - Processing Uploaded File: Bottom_ABS_2h35m.gcode
+2024-02-09 19:13:19,996 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-09 19:13:20,128 [shell_command.py:_check_proc_success()] - Command (/home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/components/file_manager/metadata.py -p /home/pi/printer_data/gcodes -f "Bottom_ABS_2h35m.gcode") successfully finished
+2024-02-09 19:13:20,137 [application.py:log_request()] - 201 POST /api/files/local (192.168.255.42) [_TRUSTED_USER_] 1714.15ms
+2024-02-09 19:13:20,142 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/Bottom_ABS_2h35m-300x300.png>
+2024-02-09 19:13:20,142 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/Bottom_ABS_2h35m-32x32.png>
+2024-02-09 19:13:20,345 [job_state.py:_status_update()] - Job Started: Bottom_ABS_2h35m.gcode
+2024-02-09 19:20:53,564 [websockets.py:on_close()] - Websocket Closed: ID: 547984148048 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 0.23
+2024-02-09 20:02:43,744 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2024-02-09 20:17:43,747 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.255.42
+2024-02-09 20:39:11,755 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.42
+2024-02-09 20:39:11,780 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.00ms
+2024-02-09 20:39:11,922 [application.py:log_request()] - 101 GET /websocket?token=NMBU4ZQRW3YYRORLXIEGEGJQG6TPXB7V (192.168.255.42) [_TRUSTED_USER_] 2.34ms
+2024-02-09 20:39:11,922 [websockets.py:open()] - Websocket Opened: ID: 547956634256, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 20:39:11,930 [websockets.py:_handle_identify()] - Websocket 547956634256 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 20:39:11,931 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 20:44:03,699 [websockets.py:on_close()] - Websocket Closed: ID: 547956634256 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 1.77
+2024-02-09 20:58:46,297 [websockets.py:on_close()] - Websocket Closed: ID: 547985237456 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 0.43
+2024-02-09 21:42:43,763 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.255.42
+2024-02-09 22:27:20,945 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.42
+2024-02-09 22:27:20,988 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 7.90ms
+2024-02-09 22:27:21,378 [application.py:log_request()] - 101 GET /websocket?token=PGSU4MV4R2SR2KKI62JUG2WIMYEHGBVL (192.168.255.42) [_TRUSTED_USER_] 2.53ms
+2024-02-09 22:27:21,378 [websockets.py:open()] - Websocket Opened: ID: 547983562128, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 22:27:21,400 [websockets.py:_handle_identify()] - Websocket 547983562128 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 22:27:21,401 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 22:27:26,490 [websockets.py:on_close()] - Websocket Closed: ID: 547983562128 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 5.11
+2024-02-09 22:27:26,675 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.93ms
+2024-02-09 22:27:28,304 [application.py:log_request()] - 101 GET /websocket?token=OV36S2WU4Y2HWVNPXZDSJGQNS6SR75PX (192.168.255.42) [_TRUSTED_USER_] 2.11ms
+2024-02-09 22:27:28,304 [websockets.py:open()] - Websocket Opened: ID: 547984029776, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 22:27:28,324 [websockets.py:_handle_identify()] - Websocket 547984029776 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 22:27:28,324 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 22:28:27,277 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarycHUCAsNSbyWbHmxw
+2024-02-09 22:28:27,290 [application.py:post()] - Processing Uploaded File: Fans.cfg
+2024-02-09 22:28:27,298 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 21.72ms
+2024-02-09 22:28:28,417 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:28:28,992 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 22:28:29,676 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:28:30,970 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:28:30,971 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:28:30,972 [klippy_connection.py:_check_ready()] - 
+Option 'hardware_pwn' is not valid in section 'fan_generic bedfans'
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+Printer is halted
+
+2024-02-09 22:28:32,555 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2024-02-09 22:28:32,981 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:28:49,152 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1Rqp7hdRnA9RTsAz
+2024-02-09 22:28:49,169 [application.py:post()] - Processing Uploaded File: Fans.cfg
+2024-02-09 22:28:49,177 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 25.92ms
+2024-02-09 22:28:49,858 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:28:49,904 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 22:28:51,118 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:28:53,914 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:28:54,336 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:28:54,338 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:28:54,585 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 22:28:54,845 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 22:28:55,343 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 22:29:00,490 [websockets.py:on_close()] - Websocket Closed: ID: 547984029776 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 12.16
+2024-02-09 22:29:00,884 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 3.29ms
+2024-02-09 22:29:01,350 [application.py:log_request()] - 101 GET /websocket?token=R2FY26FEPRJRMSRTW2DJ7K544QECAI5O (192.168.255.42) [_TRUSTED_USER_] 1.24ms
+2024-02-09 22:29:01,351 [websockets.py:open()] - Websocket Opened: ID: 547984100944, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: fluidvoron.local
+2024-02-09 22:29:01,598 [websockets.py:_handle_identify()] - Websocket 547984100944 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 22:29:01,598 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 22:32:56,134 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryYAClDYKsBUCmBbd4
+2024-02-09 22:32:56,140 [application.py:post()] - Processing Uploaded File: Fans.cfg
+2024-02-09 22:32:56,147 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 13.21ms
+2024-02-09 22:32:57,251 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:32:57,402 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 22:32:58,509 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:33:00,900 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:33:01,835 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:33:01,837 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:33:02,085 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 22:33:02,346 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 22:33:02,837 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 22:41:37,067 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryMlYmNu4Cacfo2rAU
+2024-02-09 22:41:37,078 [application.py:post()] - Processing Uploaded File: Probe_Klicky.cfg
+2024-02-09 22:41:37,085 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 19.40ms
+2024-02-09 22:42:09,113 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryKJ6LQkgYPsthQBE8
+2024-02-09 22:42:09,126 [application.py:post()] - Processing Uploaded File: klicky-variables.cfg
+2024-02-09 22:42:09,134 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 22.03ms
+2024-02-09 22:44:18,074 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryuTi0rUTM2G7ZyBs8
+2024-02-09 22:44:18,091 [application.py:post()] - Processing Uploaded File: Z_Axis.cfg
+2024-02-09 22:44:18,102 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 28.29ms
+2024-02-09 22:45:17,519 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryPFaDALcTSxmnOclO
+2024-02-09 22:45:17,534 [application.py:post()] - Processing Uploaded File: Probe_Klicky.cfg
+2024-02-09 22:45:17,545 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 26.66ms
+2024-02-09 22:45:18,667 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:45:19,925 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:45:20,295 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:45:20,298 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:45:20,300 [klippy_connection.py:_check_ready()] - 
+Option 'z_offset' in section 'probe' must be specified
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+Printer is halted
+
+2024-02-09 22:45:23,055 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:46:11,979 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryqJ4pppfDLX3PhAlB
+2024-02-09 22:46:11,994 [application.py:post()] - Processing Uploaded File: Probe_Klicky.cfg
+2024-02-09 22:46:12,004 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 25.93ms
+2024-02-09 22:46:12,965 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:46:13,109 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 22:46:14,229 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:46:16,905 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:46:17,333 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:46:17,335 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:46:17,585 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 22:46:17,844 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 22:46:18,368 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 22:47:10,789 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro PROBE_ACCURACY:gcode': gcode.CommandError: Must perform PROBE_ACCURACY with the probe above the BED, check klicky_variables bed size!
+
+2024-02-09 22:48:34,518 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: horizontal_move_z can't be less than probe's z_offset
+2024-02-09 22:49:58,115 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryrUeJIoBBheR4AaW3
+2024-02-09 22:49:58,130 [application.py:post()] - Processing Uploaded File: Probe_Klicky.cfg
+2024-02-09 22:49:58,139 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 25.21ms
+2024-02-09 22:49:59,284 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:49:59,329 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 22:50:00,545 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:50:02,899 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:50:03,582 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:50:03,584 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:50:03,834 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 22:50:04,110 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 22:50:04,610 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 22:50:13,034 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro Attach_Probe:gcode': gcode.CommandError: Must Home X and Y Axis First!
+
+2024-02-09 22:53:20,547 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.255.37
+2024-02-09 22:53:20,643 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.37) [_TRUSTED_USER_] 3.35ms
+2024-02-09 22:53:21,096 [application.py:log_request()] - 101 GET /websocket?token=72GWYDQNIQI5KU2WL7RBORPRWVOEVIMB (192.168.255.37) [_TRUSTED_USER_] 1.11ms
+2024-02-09 22:53:21,096 [websockets.py:open()] - Websocket Opened: ID: 547984463312, Proxied: True, User Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1, Host Name: fluidvoron.local
+2024-02-09 22:53:21,111 [websockets.py:_handle_identify()] - Websocket 547984463312 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 22:53:21,112 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 22:54:56,847 [websockets.py:on_close()] - Websocket Closed: ID: 547984463312 Close Code: None, Close Reason: None, Pong Time Elapsed: 5.67
+2024-02-09 22:55:55,329 [application.py:log_request()] - 101 GET /websocket?token=GKCQ3WNN3WI5QGS6DU2TAQO6BMMGXZ3P (192.168.255.37) [_TRUSTED_USER_] 2.54ms
+2024-02-09 22:55:55,329 [websockets.py:open()] - Websocket Opened: ID: 547984011920, Proxied: True, User Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1, Host Name: fluidvoron.local
+2024-02-09 22:55:55,408 [websockets.py:_handle_identify()] - Websocket 547984011920 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 22:55:55,409 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 22:56:07,086 [websockets.py:on_close()] - Websocket Closed: ID: 547984011920 Close Code: None, Close Reason: None, Pong Time Elapsed: 1.73
+2024-02-09 22:56:27,757 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarye35OaKG972Xewx4J
+2024-02-09 22:56:27,773 [application.py:post()] - Processing Uploaded File: Probe_Klicky.cfg
+2024-02-09 22:56:27,782 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 26.58ms
+2024-02-09 22:56:29,138 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:56:29,212 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 22:56:30,398 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:56:32,908 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:56:33,584 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:56:33,586 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:56:33,834 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 22:56:34,110 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 22:56:34,594 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 22:56:52,113 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryGdlpl15xzAOq8lSP
+2024-02-09 22:56:52,120 [application.py:post()] - Processing Uploaded File: Z_Axis.cfg
+2024-02-09 22:56:52,123 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 10.27ms
+2024-02-09 22:56:53,221 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 22:56:53,284 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 22:56:54,481 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 22:56:56,901 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 22:56:57,582 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 22:56:57,584 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 22:56:57,833 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 22:56:58,092 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 22:56:58,585 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 23:03:13,383 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.95ms
+2024-02-09 23:03:13,748 [application.py:log_request()] - 101 GET /websocket?token=EGOHH56F47PPQPRUKDFLLEMYKMMS6ITV (192.168.255.42) [_TRUSTED_USER_] 2.23ms
+2024-02-09 23:03:13,749 [websockets.py:open()] - Websocket Opened: ID: 547985426192, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-09 23:03:14,007 [websockets.py:_handle_identify()] - Websocket 547985426192 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 23:03:14,008 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 23:03:19,311 [websockets.py:on_close()] - Websocket Closed: ID: 547985426192 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 5.56
+2024-02-09 23:03:19,690 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 6.87ms
+2024-02-09 23:03:21,955 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 7.84ms
+2024-02-09 23:03:22,635 [application.py:log_request()] - 101 GET /websocket?token=QSWF25PJ2YGGD7GM5X4GPFN2NLNGIBC7 (192.168.255.42) [_TRUSTED_USER_] 2.33ms
+2024-02-09 23:03:22,635 [websockets.py:open()] - Websocket Opened: ID: 547984024336, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-09 23:03:22,891 [websockets.py:_handle_identify()] - Websocket 547984024336 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 23:03:22,892 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 23:03:37,953 [websockets.py:on_close()] - Websocket Closed: ID: 547984024336 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 5.04
+2024-02-09 23:03:38,343 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.255.42) [_TRUSTED_USER_] 7.94ms
+2024-02-09 23:03:39,704 [application.py:log_request()] - 101 GET /websocket?token=GECDCTMGE5HJQOM5FKPQENM2EFZYTSOX (192.168.255.42) [_TRUSTED_USER_] 2.58ms
+2024-02-09 23:03:39,704 [websockets.py:open()] - Websocket Opened: ID: 547947064464, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.255.91
+2024-02-09 23:03:39,727 [websockets.py:_handle_identify()] - Websocket 547947064464 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-09 23:03:39,728 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-09 23:12:45,691 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryrtQsVFFusmA8gdAH
+2024-02-09 23:12:45,708 [application.py:post()] - Processing Uploaded File: Print_Start.cfg
+2024-02-09 23:12:45,718 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 27.65ms
+2024-02-09 23:12:46,826 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 23:12:46,925 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 23:12:48,085 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 23:12:50,908 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 23:12:51,336 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 23:12:51,338 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 23:12:51,586 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 23:12:51,846 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 23:12:52,337 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 23:35:59,997 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=------------------------09485f78e456d2e2
+2024-02-09 23:36:00,018 [application.py:post()] - Processing Uploaded File: flat_rectangle_ABS_15m8s.gcode
+2024-02-09 23:36:00,249 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-09 23:36:00,344 [shell_command.py:_check_proc_success()] - Command (/home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/components/file_manager/metadata.py -p /home/pi/printer_data/gcodes -f "flat_rectangle_ABS_15m8s.gcode") successfully finished
+2024-02-09 23:36:00,355 [application.py:log_request()] - 201 POST /api/files/local (192.168.255.42) [_TRUSTED_USER_] 359.47ms
+2024-02-09 23:36:00,361 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/flat_rectangle_ABS_15m8s-300x300.png>
+2024-02-09 23:36:00,361 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/flat_rectangle_ABS_15m8s-32x32.png>
+2024-02-09 23:36:00,537 [job_state.py:_status_update()] - Job Started: flat_rectangle_ABS_15m8s.gcode
+2024-02-09 23:38:57,328 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryBJXKQ0FIf1qveVOr
+2024-02-09 23:38:57,342 [application.py:post()] - Processing Uploaded File: Probe_Klicky.cfg
+2024-02-09 23:38:57,350 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 22.97ms
+2024-02-09 23:38:58,453 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 23:38:58,468 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 23:38:58,509 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 23:38:59,713 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 23:39:02,905 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 23:39:03,085 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 23:39:03,087 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 23:39:03,334 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 23:39:03,609 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 23:39:04,095 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 23:39:07,872 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=------------------------07e6f29a8acfafe9
+2024-02-09 23:39:07,890 [application.py:post()] - Processing Uploaded File: flat_rectangle_ABS_15m8s.gcode
+2024-02-09 23:39:08,071 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-09 23:39:08,167 [shell_command.py:_check_proc_success()] - Command (/home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/components/file_manager/metadata.py -p /home/pi/printer_data/gcodes -f "flat_rectangle_ABS_15m8s.gcode") successfully finished
+2024-02-09 23:39:08,178 [application.py:log_request()] - 201 POST /api/files/local (192.168.255.42) [_TRUSTED_USER_] 305.89ms
+2024-02-09 23:39:08,186 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/flat_rectangle_ABS_15m8s-300x300.png>
+2024-02-09 23:39:08,186 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/flat_rectangle_ABS_15m8s-32x32.png>
+2024-02-09 23:39:08,345 [job_state.py:_status_update()] - Job Started: flat_rectangle_ABS_15m8s.gcode
+2024-02-09 23:47:19,244 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryCtyTOeic9mURWbpI
+2024-02-09 23:47:19,267 [application.py:post()] - Processing Uploaded File: Probe_Klicky.cfg
+2024-02-09 23:47:19,274 [application.py:log_request()] - 201 POST /server/files/upload (192.168.255.42) [_TRUSTED_USER_] 31.03ms
+2024-02-09 23:47:20,380 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-09 23:47:20,401 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 23:47:20,419 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-09 23:47:21,641 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-09 23:47:23,901 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2024-02-09 23:47:24,834 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-09 23:47:24,837 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-09 23:47:25,083 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-09 23:47:25,344 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-09 23:47:25,843 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor Pi', 'temperature_sensor Octopus', 'temperature_sensor NitehawkChip', 'temperature_sensor Nitehawk', 'extruder']
+2024-02-09 23:57:43,786 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.255.37
+2024-02-09 23:58:16,226 [application.py:prepare()] - Upload Request Received from 192.168.255.42
+Content-Type: multipart/form-data; boundary=------------------------2f62458ce3fed690
+2024-02-09 23:58:16,598 [application.py:post()] - Processing Uploaded File: key_asymmetric_4_ABS_47m51s.gcode
+2024-02-09 23:58:16,781 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-09 23:58:16,911 [shell_command.py:_check_proc_success()] - Command (/home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/components/file_manager/metadata.py -p /home/pi/printer_data/gcodes -f "key_asymmetric_4_ABS_47m51s.gcode") successfully finished
+2024-02-09 23:58:16,920 [application.py:log_request()] - 201 POST /api/files/local (192.168.255.42) [_TRUSTED_USER_] 695.71ms
+2024-02-09 23:58:16,926 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/key_asymmetric_4_ABS_47m51s-300x300.png>
+2024-02-09 23:58:16,926 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.files.metadata, Code: -32601, Message: Metadata not available for <.thumbs/key_asymmetric_4_ABS_47m51s-32x32.png>
+2024-02-09 23:58:17,177 [job_state.py:_status_update()] - Job Started: key_asymmetric_4_ABS_47m51s.gcode
