@@ -33,3 +33,14 @@
 [2024-02-10 19:39:36]: Log rotation is disabled
 [2024-02-10 19:40:00]: Backing /home/pi/ up to Git
 [2024-02-10 19:40:00]: Adding changes to push
+[2024-02-10 19:40:00]: Committing to Git repository
+[2024-02-10 19:40:00]: Pushing to Git repository
+[2024-02-10 19:40:01]: /home/pi/ backed up
+[2024-02-10 19:40:01]: Backing /home/pi/printer_data/config up to Git
+[2024-02-10 19:40:01]: Adding changes to push
+[2024-02-10 19:40:01]: Committing to Git repository
+[2024-02-10 19:40:01]: Pushing to Git repository
+[2024-02-10 19:40:02]: /home/pi/printer_data/config backed up
+[2024-02-10 19:40:02]: Log rotation is disabled
+[2024-02-10 19:40:28]: Backing /home/pi/ up to Git
+[2024-02-10 19:40:28]: Adding changes to push
