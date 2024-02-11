@@ -57,3 +57,22 @@
 [2024-02-10 19:40:59]: Log rotation is disabled
 [2024-02-10 19:41:23]: Backing /home/pi/ up to Git
 [2024-02-10 19:41:23]: Adding changes to push
+[2024-02-10 19:41:23]: Committing to Git repository
+[2024-02-10 19:41:23]: Pushing to Git repository
+[2024-02-10 19:41:24]: /home/pi/ backed up
+[2024-02-10 19:41:24]: Backing /home/pi/printer_data/config up to Git
+[2024-02-10 19:41:24]: Adding changes to push
+[2024-02-10 19:41:24]: Committing to Git repository
+[2024-02-10 19:41:24]: Pushing to Git repository
+[2024-02-10 19:41:24]: /home/pi/printer_data/config backed up
+[2024-02-10 19:41:24]: Log rotation is disabled
+[2024-02-10 19:41:57]: Started backup of /home/pi/printer_data/config
+[2024-02-10 19:41:57]: Making a local backup of the current configuration
+[2024-02-10 19:41:57]: Restoring config
+[2024-02-10 19:42:02]: Old config folder is located at /home/pi/printer_data/config_2024-02-10.bak
+[2024-02-10 19:43:45]: Started backup of /home/pi/printer_data/config
+[2024-02-10 19:43:45]: Making a local backup of the current configuration
+[2024-02-10 19:43:45]: Restoring config
+[2024-02-10 19:43:53]: Old config folder is located at /home/pi/printer_data/config_2024-02-10.bak
+[2024-02-10 19:46:32]: Backing /home/pi/ up to Git
+[2024-02-10 19:46:32]: Adding changes to push
