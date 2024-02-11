@@ -130,3 +130,14 @@
 [2024-02-10 19:59:44]: Deleting old logs
 [2024-02-10 20:01:21]: Backing /home/pi/ up to Git
 [2024-02-10 20:01:21]: Adding changes to push
+[2024-02-10 20:01:21]: Committing to Git repository
+[2024-02-10 20:01:21]: Pushing to Git repository
+[2024-02-10 20:01:22]: /home/pi/ backed up
+[2024-02-10 20:01:22]: Backing /home/pi/printer_data/config up to Git
+[2024-02-10 20:01:22]: Adding changes to push
+[2024-02-10 20:01:22]: Committing to Git repository
+[2024-02-10 20:01:22]: Pushing to Git repository
+[2024-02-10 20:01:22]: /home/pi/printer_data/config backed up
+[2024-02-10 20:01:22]: Deleting old logs
+[2024-02-10 20:02:03]: Backing /home/pi/ up to Git
+[2024-02-10 20:02:03]: Adding changes to push
