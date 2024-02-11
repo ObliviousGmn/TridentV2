@@ -1,2 +1,4 @@
 variables.cfg 
 Calibrate/Results/inputshaper/*.csv
+.moonraker.conf.bkp
+fluidd.cfg
