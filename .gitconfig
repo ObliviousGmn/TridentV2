@@ -1,9 +1,0 @@
-[user]
-	email = German.thomas00@gmail.com
-	name = ObliviousGmn
-[init]
-	defaultBranch = main
-[pack]
-	windowMemory = 100m
-	packSizeLimit = 100m
-	threads = 2
