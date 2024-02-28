@@ -1,15 +1,16 @@
 ## -+- SB Toolhead config
 
+## Clockwork 2
 [extruder]
-## -+- Galileo 2
-rotation_distance: 47.088
-gear_ratio: 9:1
+gear_ratio: 50:10
+rotation_distance: 22.44
 microsteps: 16
 
 ## Pins
 step_pin: nhk:gpio23
 dir_pin: !nhk:gpio24
 enable_pin: !nhk:gpio25
+## -//-
 
 ## -+- Pressure Advance
 pressure_advance: 0.05 
