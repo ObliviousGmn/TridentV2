@@ -2,9 +2,10 @@
 
 ## Clockwork 2
 [extruder]
-gear_ratio: 50:10
-rotation_distance: 22.44
+rotation_distance: 53.494165  # Re-calibrate your own value
+gear_ratio: 44:10, 37:17
 microsteps: 16
+
 
 ## Pins
 step_pin: nhk:gpio23

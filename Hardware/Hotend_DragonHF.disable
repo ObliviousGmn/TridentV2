@@ -14,7 +14,14 @@ nozzle_diameter: 0.400
 filament_diameter: 1.750
 
 control: pid
-pid_Kp: 26.239
-pid_Ki: 1.965
-pid_Kd: 87.574
+pid_Kp: 25.859
+pid_Ki: 1.777
+pid_Kd: 94.065
 ## -//-
+
+
+[temperature_sensor Heatsink]
+sensor_type: Generic 3950
+sensor_pin: nhk:gpio28
+min_temp: 0
+max_temp: 95
