@@ -19,9 +19,3 @@ pid_Ki: 1.777
 pid_Kd: 94.065
 ## -//-
 
-
-[temperature_sensor Heatsink]
-sensor_type: Generic 3950
-sensor_pin: nhk:gpio28
-min_temp: 0
-max_temp: 95
